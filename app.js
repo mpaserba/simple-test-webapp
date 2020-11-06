@@ -31,3 +31,14 @@ app2.get('/1', function (request, response) {
   response.contentType("application/json");
   response.send({name: "server2", path: "1"})
 })
+
+
+app1.get('/test', function (request, response) {
+  response.contentType("application/json");
+  response.send({name: "server1", path: "/test"})
+})
+
+app1.get('/test/:param', function (request, response) {
+  response.contentType("application/json");
+  response.send({name: "server1", path: "/test", params: request.params.param})
+})
