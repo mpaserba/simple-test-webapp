@@ -19,3 +19,11 @@ app1.get('/', function (request, response) {
 app2.get('/', function (request, response) {
 response.send("Server 2")
 })
+
+app1.get('/1', function (request, response) {
+  response.send("Context 1 Server 1")
+})
+
+app2.get('/1', function (request, response) {
+response.send("Context 1 Server 2")
+})
