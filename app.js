@@ -13,17 +13,21 @@ app2.listen(3002, () => {
 
 
 app1.get('/', function (request, response) {
-    response.send("Server 1")
+    response.contentType("application/json");
+    response.send({name: "server1"});
   })
 
 app2.get('/', function (request, response) {
-response.send("Server 2")
+  response.contentType("application/json");
+  response.send({name: "server2"})
 })
 
 app1.get('/1', function (request, response) {
-  response.send("Context 1 Server 1")
+  response.contentType("application/json");
+  response.send({name: "server1", path: "1"})
 })
 
 app2.get('/1', function (request, response) {
-response.send("Context 1 Server 2")
+  response.contentType("application/json");
+  response.send({name: "server2", path: "1"})
 })
