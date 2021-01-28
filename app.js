@@ -1,44 +1,27 @@
 var express = require('express');
+var app1 = express();
+var port = process.env.port || 3000
 
-let app1 = express();
-let app2 = express();
-
-app1.listen(3000, () => {
-  console.log("Started server on 3000");
+app1.listen(port, () => {
+  console.log("Started server on port: ", port);
 });
-
-app2.listen(3002, () => {
-  console.log("Started server on 3002");   
-});
-
 
 app1.get('/', function (request, response) {
     response.contentType("application/json");
-    response.send({name: "server1"});
-  })
-
-app2.get('/', function (request, response) {
-  response.contentType("application/json");
-  response.send({name: "server2"})
+    response.send({name: "server", port: port});
 })
 
 app1.get('/1', function (request, response) {
   response.contentType("application/json");
-  response.send({name: "server1", path: "1"})
+  response.send({name: "server", port: port, path: "1"})
 })
-
-app2.get('/1', function (request, response) {
-  response.contentType("application/json");
-  response.send({name: "server2", path: "1"})
-})
-
 
 app1.get('/test', function (request, response) {
   response.contentType("application/json");
-  response.send({name: "server1", path: "/test"})
+  response.send({name: "server", port: port, path: "/test"})
 })
 
 app1.get('/test/:param', function (request, response) {
   response.contentType("application/json");
-  response.send({name: "server1", path: "/test", params: request.params.param})
+  response.send({name: "server", port: port, path: "/test", params: request.params.param})
 })
